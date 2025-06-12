@@ -4,10 +4,11 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
+
+
 COPY ["TestProduct.csproj", "./"]
 RUN dotnet restore "TestProduct.csproj"
 COPY . .
-WORKDIR "./TestProduct"
 RUN dotnet build "TestProduct.csproj" -c Release -o /app/build
 
 FROM build AS publish
