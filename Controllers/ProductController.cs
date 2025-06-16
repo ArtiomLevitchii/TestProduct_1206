@@ -36,7 +36,7 @@ public class ProductController : ControllerBase
      
             _dbContext.Logs.Add(new ActionLogModel { 
                 Id = Guid.NewGuid(), 
-                TimeStamp = DateTime.Now, 
+                TimeStamp = DateTime.UtcNow, 
                 LogType = Enums.LogType.AddingNewProductToDatabase, 
                 UserIp = $"{this.HttpContext.Connection.RemoteIpAddress}" 
             });
